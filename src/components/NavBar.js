@@ -8,7 +8,7 @@ export default class NavBar extends React.Component {
         return (
             <div>
                 <nav className="navbar navbar-light navbar-nav bg-light justify-content-center">
-                    <Link>
+                    <Link to="/welcome">
                         <img src={logo} alt="" style={{ maxHeight: '60px' }} />
                     </Link>
                 </nav>
