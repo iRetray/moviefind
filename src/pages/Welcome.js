@@ -10,14 +10,13 @@ export default class Welcome extends React.Component {
     render() {
         return (
             <div>
-
                 <div className="container-fluid" style={{ maxWidth: '90%' }}>
                     <div className="row justify-content-md-center" style={{ marginTop: '30px' }}>
                         <div className="col-xl-8" style={{ padding: '15px' }}>
                             <Carrousell className="container-fluid" />
                         </div>
                         <div className="col-xl-4" style={{ padding: '15px' }}>
-                            <img src={logoBlanco} alt="" className="img-fluid" style={{display: 'block', marginLeft: 'auto', marginRight: 'auto'}}/>
+                            <img src={logoBlanco} alt="" className="img-fluid" style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto' }} />
                             <hr style={{ borderColor: 'white' }}></hr>
                             <center>
                                 <h3 className="text-white">Una herramienta para buscar y filtrar películas, series y programas de televisión.</h3>
@@ -41,7 +40,7 @@ export default class Welcome extends React.Component {
                                 </div>
                             </div>
                             <br></br>
-                            <Link to="/home" style={{textDecoration: 'none'}}>
+                            <Link to="/home" style={{ textDecoration: 'none' }}>
                                 <Button color="danger" size="lg" block><FontAwesomeIcon icon={faPlayCircle}></FontAwesomeIcon> <strong>Buscar películas</strong></Button>
                             </Link>
                         </div>
