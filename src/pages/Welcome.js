@@ -20,10 +20,12 @@ export default class Welcome extends React.Component {
                             <img src={logoBlanco} alt="" className="img-fluid" />
                             <hr style={{ borderColor: 'white' }}></hr>
                             <center>
-                                <h3 className="text-white">Una herramienta para buscar y filtrar películas y series.</h3>
+                                <h3 className="text-white">Una herramienta para buscar y filtrar películas, series y programas de televisión.</h3>
                                 <br></br>
                                 <Alert color="secondary">
-                                    <h5>Realiza busquedas por actor, género, título, año de producción o calificación, todo gracias a la <strong><i>API REST</i></strong> pública que proporciona <strong><i>TMDB.</i></strong></h5>
+                                    <h4>Realiza busquedas por actor, género, título, año de producción o calificación.</h4>
+                                    <hr></hr>
+                                    <h6 className="text-muted">Potenciado con la <strong><i>API REST</i></strong> pública que proporciona <strong><i>TMDB.</i></strong></h6>
                                 </Alert>
                             </center>
                             <div className="row">
