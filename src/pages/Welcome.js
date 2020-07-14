@@ -1,23 +1,44 @@
 import React from 'react'
-import { Jumbotron, Button } from 'reactstrap'
+import { Link } from 'react-router-dom'
+import { Button, Alert } from 'reactstrap'
 import movies from '../images/movies.png'
+import logoBlanco from '../images/tituloBlanco.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFilm } from '@fortawesome/free-solid-svg-icons'
+import { faCode, faNewspaper, faPlayCircle } from '@fortawesome/free-solid-svg-icons'
+import {  } from '@fortawesome/free-regular-svg-icons'
 
 export default class Welcome extends React.Component {
     render() {
         return (
-            <div>
-                <div className="row justify-content-md-center container-fluid">
-                    <img src={movies} alt="" className="img-fluid" style={{ maxHeight: '500px' }} />
-                </div>
-                <div class="position-sticky">
-                <div className="row justify-content-md-center container-fluid">
-                    <center>
-                    <p className="lead text-light">"El cine es, además de un espectáculo de masas, la imagen en movimiento de la historia de la humanidad"</p>
-                    <Button color="danger" size="lg"><FontAwesomeIcon icon={ faFilm }/> ¡Buscar películas!</Button>
-                    </center>
-                </div>
+            <div className="container-fluid" style={{maxWidth: '90%'}}>
+                <div className="row justify-content-md-center" style={{ marginTop: '30px' }}>
+                    <div className="col-md-8" style={{ padding: '15px' }}>
+                        <img src={movies} alt="" className="img-fluid" style={{ maxHeight: '500px' }} />
+                    </div>
+                    <div className="col-md-4" style={{ padding: '15px' }}>
+                        <img src={logoBlanco} alt="" className="img-fluid" />
+                        <hr style={{ borderColor: 'white' }}></hr>
+                        <center>
+                            <h3 className="text-white">Una herramienta para buscar y filtrar películas.</h3>
+                            <Alert color="secondary">
+                                <h5>Realiza busquedas por actor, género, título, año de producción o calificación, todo gracias a la <strong><i>API REST</i></strong> pública que proporciona <strong><i>TMDB.</i></strong></h5>
+                            </Alert>
+                        </center>
+                        <div className="row">
+                            <div className="col-sm-6" style={{ marginTop: '5px' }}>
+                                <Button color="warning" size="sm" href="" href="https://www.themoviedb.org/documentation/api?language=es" block>
+                                    <FontAwesomeIcon icon={faCode} /> Documentación de <strong>API REST</strong>
+                                </Button>
+                            </div>
+                            <div className="col-sm-6" style={{ marginTop: '5px' }}>
+                                <Button color="warning" size="sm" block>
+                                    <FontAwesomeIcon icon={faNewspaper} /> Página web de <strong>TMDB</strong>
+                                </Button>
+                            </div>
+                        </div>
+                        <br></br>
+                        <Button color="danger" size="lg" block><FontAwesomeIcon icon={faPlayCircle}></FontAwesomeIcon> <strong>Buscar películas</strong></Button>
+                    </div>
                 </div>
             </div>
         )
