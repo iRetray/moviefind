@@ -1,11 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { Button, Alert } from 'reactstrap'
-import movies from '../images/movies.png'
 import logoBlanco from '../images/tituloBlanco.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCode, faNewspaper, faPlayCircle } from '@fortawesome/free-solid-svg-icons'
-import {  } from '@fortawesome/free-regular-svg-icons'
+import Carrousell from '../components/Carrousell'
 
 export default class Welcome extends React.Component {
     render() {
@@ -13,13 +11,14 @@ export default class Welcome extends React.Component {
             <div className="container-fluid" style={{maxWidth: '90%'}}>
                 <div className="row justify-content-md-center" style={{ marginTop: '30px' }}>
                     <div className="col-md-8" style={{ padding: '15px' }}>
-                        <img src={movies} alt="" className="img-fluid" style={{ maxHeight: '500px' }} />
+                        <Carrousell />
                     </div>
                     <div className="col-md-4" style={{ padding: '15px' }}>
                         <img src={logoBlanco} alt="" className="img-fluid" />
                         <hr style={{ borderColor: 'white' }}></hr>
                         <center>
-                            <h3 className="text-white">Una herramienta para buscar y filtrar películas.</h3>
+                            <h3 className="text-white">Una herramienta para buscar y filtrar películas y series.</h3>
+                            <br></br>
                             <Alert color="secondary">
                                 <h5>Realiza busquedas por actor, género, título, año de producción o calificación, todo gracias a la <strong><i>API REST</i></strong> pública que proporciona <strong><i>TMDB.</i></strong></h5>
                             </Alert>
