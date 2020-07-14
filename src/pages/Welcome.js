@@ -13,11 +13,11 @@ export default class Welcome extends React.Component {
 
                 <div className="container-fluid" style={{ maxWidth: '90%' }}>
                     <div className="row justify-content-md-center" style={{ marginTop: '30px' }}>
-                        <div className="col-md-8" style={{ padding: '15px' }}>
+                        <div className="col-xl-8" style={{ padding: '15px' }}>
                             <Carrousell className="container-fluid" />
                         </div>
-                        <div className="col-md-4" style={{ padding: '15px' }}>
-                            <img src={logoBlanco} alt="" className="img-fluid" />
+                        <div className="col-xl-4" style={{ padding: '15px' }}>
+                            <img src={logoBlanco} alt="" className="img-fluid" style={{display: 'block', marginLeft: 'auto', marginRight: 'auto'}}/>
                             <hr style={{ borderColor: 'white' }}></hr>
                             <center>
                                 <h3 className="text-white">Una herramienta para buscar y filtrar películas, series y programas de televisión.</h3>
