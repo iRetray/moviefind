@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Button, Alert } from 'reactstrap'
 import logoBlanco from '../images/tituloBlanco.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -32,13 +33,15 @@ export default class Welcome extends React.Component {
                                     </Button>
                                 </div>
                                 <div className="col-sm-6" style={{ marginTop: '5px' }}>
-                                    <Button color="warning" size="sm" block>
+                                    <Button color="warning" size="sm" block href="https://www.themoviedb.org/?language=es">
                                         <FontAwesomeIcon icon={faNewspaper} /> Página web de <strong>TMDB</strong>
                                     </Button>
                                 </div>
                             </div>
                             <br></br>
-                            <Button color="danger" size="lg" block><FontAwesomeIcon icon={faPlayCircle}></FontAwesomeIcon> <strong>Buscar películas</strong></Button>
+                            <Link to="/home" style={{textDecoration: 'none'}}>
+                                <Button color="danger" size="lg" block><FontAwesomeIcon icon={faPlayCircle}></FontAwesomeIcon> <strong>Buscar películas</strong></Button>
+                            </Link>
                         </div>
                     </div>
                 </div>
