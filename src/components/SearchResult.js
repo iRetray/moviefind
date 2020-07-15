@@ -10,7 +10,6 @@ export default class SearchResult extends React.Component {
             results: []
         }
         this.peticionAPI = this.peticionAPI.bind(this)
-        this.peticionAPIposter = this.peticionAPIposter.bind(this)
     }
 
     componentDidUpdate() {
@@ -25,14 +24,6 @@ export default class SearchResult extends React.Component {
         this.setState({
             results: peticion.data.results
         })
-        console.log(this.state.results)
-    }
-
-    async peticionAPIposter(posterPath) {
-        const queryBase = "https://image.tmdb.org/t/p/original";
-        const completeQuery = queryBase.concat(posterPath);
-        console.log("La ruta de imagen es: ", completeQuery);
-        return completeQuery;
     }
 
     render() {
@@ -40,14 +31,17 @@ export default class SearchResult extends React.Component {
             <div className="row">
                 {
                     this.state.results.map(e =>
-                        <div className="col-lg-3">
+                        e.poster_path!==null ?  
+                        <div style={{ height: '400px', margin: '20px' }} key={e.id}>
                             <Movie
                                 title={e.title}
+                                isPosterNull={e.poster_path}
                                 poster={"https://image.tmdb.org/t/p/w500" + e.poster_path}
                                 calificacion={e.vote_average}
                                 id={e.id}
                             />
                         </div>
+                        : <div key={e.id}></div>
                     )
                 }
             </div>

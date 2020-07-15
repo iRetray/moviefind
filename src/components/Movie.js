@@ -5,43 +5,47 @@ import Axios from 'axios'
 
 export default class Movie extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props)
         this.state = {
-            dataMovie: []
+            genresMovie: []
         }
     }
 
-    componentDidUpdate(){
+    componentDidUpdate() {
         this.getDataOfMovie(this.props.id)
     }
 
-    async getDataOfMovie(id){
-        console.log(id)
-        const completeQuery = "https://api.themoviedb.org/3/movie/"+id+"?api_key=32f3a04caefdfe3f72de841ee31a3954&language=es"
-        console.log(completeQuery)
+    async getDataOfMovie(id) {
+        const completeQuery = "https://api.themoviedb.org/3/movie/" + id + "?api_key=32f3a04caefdfe3f72de841ee31a3954&language=es"        
         const peticion = await Axios.get(completeQuery)
         this.setState({
-            dataMovie: peticion
+            genresMovie: peticion.data.genres
         })
-        console.log(this.state.dataMovie)
     }
 
     render() {
+
+        if (this.props.isPosterNull==="null") {
+            this.props.poster="https://lh3.googleusercontent.com/proxy/idTmEONq0j7m4jepn0UJQ4b_N_kosxTK-8GKG0pMXTcFA2eLYkLRfCBH1eM5Eaa7fUfRHnkXG3vwhgLTHCgZwb8"
+        }
+
         return (
-            <div className="row align-items-center">
-                <div className="col-sm-8 align-self-center">
-                    <img src={this.props.poster} alt="" style={{ maxWidth: '200px' }} />
+            <div className="row" style={{ margin: '10px'}}>
+                <div className="col">
+                    <img src={this.props.poster} alt="" className="img-fluid"/>
                 </div>
-                <div className="col-sm-4 align-self-center">
+                <div className="col" style={{ width: '220px', padding: '20px', backgroundColor: '#2B2E32' }}>
+                    <center>
                     <h6 className="text-white"><strong>{this.props.title}</strong></h6>
+                    <Rating name="read-only" size="small" value={this.props.calificacion / 2} readOnly precision={0.1} />
+                    </center>
+                    <br />
                     {
-                        this.state.dataMovie.genres.map(e =>
-                            <Badge>e.name</Badge>
+                        this.state.genresMovie.map(e =>
+                            <Badge color="primary" style={{marginRight: '1px'}} key={e.name}> {e.name}</Badge>
                         )
-                    }
-                    <Badge></Badge>                   
-                    <Rating name="read-only" size="small" value={this.props.calificacion/2} readOnly precision={0.1} />
+                    }                    
                 </div>
             </div>
         )
