@@ -26,16 +26,12 @@ export default class Movie extends React.Component {
 
     render() {
 
-        if (this.props.isPosterNull==="null") {
-            this.props.poster="https://lh3.googleusercontent.com/proxy/idTmEONq0j7m4jepn0UJQ4b_N_kosxTK-8GKG0pMXTcFA2eLYkLRfCBH1eM5Eaa7fUfRHnkXG3vwhgLTHCgZwb8"
-        }
-
         return (
-            <div className="row" style={{ margin: '10px'}}>
-                <div className="col">
+            <div className="row">
+                <div className="col-6" style={{ minWidth: '190px' }}>
                     <img src={this.props.poster} alt="" className="img-fluid"/>
                 </div>
-                <div className="col" style={{ width: '220px', padding: '20px', backgroundColor: '#2B2E32' }}>
+                <div className="col-6" style={{ padding: '10px', backgroundColor: '#2B2E32', minWidth: '150px' }}>
                     <center>
                     <h6 className="text-white"><strong>{this.props.title}</strong></h6>
                     <Rating name="read-only" size="small" value={this.props.calificacion / 2} readOnly precision={0.1} />

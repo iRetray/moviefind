@@ -26,7 +26,7 @@ export default class Home extends React.Component {
                     <Searcher setSearch={this.getSearch} />
                     <p className="text-muted"><i> Has buscado:</i> <Badge>{this.state.query}</Badge></p>
                 </div>
-                <div className="container-fluid" style={{ maxWidth: '90%' }}>
+                <div className="container-fluid">
                     <SearchResult search={this.state.query} />
                 </div>
             </div>

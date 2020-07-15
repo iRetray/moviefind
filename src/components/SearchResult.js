@@ -28,11 +28,12 @@ export default class SearchResult extends React.Component {
 
     render() {
         return (
-            <div className="row">
+            <div className="row justify-content-md-center">
                 {
                     this.state.results.map(e =>
                         e.poster_path!==null ?  
-                        <div style={{ height: '400px', margin: '20px' }} key={e.id}>
+                        <div className="col" style={{ margin: '5px', minWidth: '430px', maxWidth: '430px' }} key={e.id}>
+                            <center>
                             <Movie
                                 title={e.title}
                                 isPosterNull={e.poster_path}
@@ -40,6 +41,7 @@ export default class SearchResult extends React.Component {
                                 calificacion={e.vote_average}
                                 id={e.id}
                             />
+                            </center>
                         </div>
                         : <div key={e.id}></div>
                     )
