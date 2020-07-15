@@ -39,7 +39,7 @@ export default class SearchResult extends React.Component {
             <div className="row">
                 {
                     this.state.results.map( e =>
-                        <div className="col-4">
+                        <div className="col-lg-4">
                             <p className="text-white">{e.title}</p>
                             <img src={"https://image.tmdb.org/t/p/w500"+e.poster_path} alt=""  style={{maxWidth: '300px'}}/>
                         </div>
