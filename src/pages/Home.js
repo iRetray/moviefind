@@ -1,14 +1,14 @@
 import React from 'react'
 import Searcher from '../components/Searcher'
 import SearchResult from '../components/SearchResult'
+import { Badge } from 'reactstrap'
 
 export default class Home extends React.Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            query: "",
-            results: []
+            query: ""
         }
         this.getSearch = this.getSearch.bind(this)
     }
@@ -16,15 +16,19 @@ export default class Home extends React.Component {
     getSearch(query) {
         this.setState({
             query
-        })  
+        })
     }
 
     render() {
         return (
-            <div className="container">
-                <Searcher setSearch={this.getSearch} />
-                <h5 className="text-white">Has buscado: {this.state.query}</h5>
-                <SearchResult search={this.state.query} setResult={this.getResults}/>
+            <div className="container-fluid">
+                <div className="container">
+                    <Searcher setSearch={this.getSearch} />
+                    <p className="text-muted"><i> Has buscado:</i> <Badge>{this.state.query}</Badge></p>
+                </div>
+                <div className="container-fluid" style={{ maxWidth: '90%' }}>
+                    <SearchResult search={this.state.query} />
+                </div>
             </div>
         )
     }

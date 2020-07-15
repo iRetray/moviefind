@@ -23,7 +23,6 @@ export default class Searcher extends React.Component {
         this.setState({
             search: e.target.value
         })
-        this.props.setSearch(e.target.value)
     }
 
     render() {
@@ -33,7 +32,7 @@ export default class Searcher extends React.Component {
                     <InputGroupAddon addonType="prepend">
                         <InputGroupText><FontAwesomeIcon icon={faFilm} /></InputGroupText>
                     </InputGroupAddon>
-                    <Input placeholder="Nombre de película o serie para buscar" value={this.state.search} onChange={this.handleChange} name="search" type="text"/>
+                    <Input placeholder="Nombre de película o serie para buscar" value={this.state.search} onChange={this.handleChange} name="search" type="text" autoComplete="off"/>
                     <InputGroupAddon addonType="append">
                         <Button type="submit" color="danger"><FontAwesomeIcon icon={faSearch} /> Buscar</Button>
                     </InputGroupAddon>
