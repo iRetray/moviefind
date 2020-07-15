@@ -18,8 +18,9 @@ export default class SearchResult extends React.Component {
 
     async peticionAPI() {
         const query = this.props.search
+        const pageQuery = "&page="+this.props.page
         const queryBase = "https://api.themoviedb.org/3/search/movie?api_key=32f3a04caefdfe3f72de841ee31a3954&language=es&query="
-        const completeQuery = queryBase.concat(query)
+        const completeQuery = queryBase.concat(query,pageQuery)
         const peticion = await Axios.get(completeQuery)
         this.setState({
             results: peticion.data.results
@@ -32,7 +33,7 @@ export default class SearchResult extends React.Component {
                 {
                     this.state.results.map(e =>
                         e.poster_path!==null ?  
-                        <div className="col" style={{ margin: '5px', minWidth: '430px', maxWidth: '430px' }} key={e.id}>
+                        <div className="col-md-2" style={{padding: '10px'}} key={e.id}>
                             <center>
                             <Movie
                                 title={e.title}
