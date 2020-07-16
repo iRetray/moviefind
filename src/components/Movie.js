@@ -27,8 +27,19 @@ export default class Movie extends React.Component {
     render() {
 
         return (
-            <div>                
-                <img src={this.props.poster} alt="" className="img-fluid"/>
+            <div className="card" style={{border: 'none'}}>
+                <img className="card-img-top" src={this.props.poster} alt="" className="img-fluid" />
+                <div class="card-body">
+                    <h5 class="card-title">{this.props.title}</h5>
+                    <Rating name="read-only" size="small" value={this.props.calificacion / 2} readOnly precision={0.1} />
+                    <p class="card-text">
+                        {
+                            this.state.genresMovie.map(e =>
+                                <Badge style={{marginRight: '3px'}}>{e.name}</Badge>
+                            )
+                        }
+                    </p>
+                </div>
             </div>
         )
     }
