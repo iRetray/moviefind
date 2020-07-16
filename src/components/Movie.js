@@ -29,13 +29,13 @@ export default class Movie extends React.Component {
         return (
             <div className="card" style={{border: 'none'}}>
                 <img className="card-img-top img-fluid" src={this.props.poster} alt="" />
-                <div class="card-body">
-                    <h5 class="card-title">{this.props.title}</h5>
+                <div className="card-body">
+                    <h5 className="card-title">{this.props.title}</h5>
                     <Rating name="read-only" size="small" value={this.props.calificacion / 2} readOnly precision={0.1} />
-                    <p class="card-text">
+                    <p className="card-text">
                         {
                             this.state.genresMovie.map(e =>
-                                <Badge style={{marginRight: '3px'}}>{e.name}</Badge>
+                                <Badge style={{marginRight: '3px'}} key={e.name}>{e.name}</Badge>
                             )
                         }
                     </p>
