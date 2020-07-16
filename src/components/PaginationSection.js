@@ -1,5 +1,5 @@
 import React from 'react'
-import { Pagination, PaginationItem, PaginationLink, Button, Alert, Badge, ButtonGroup } from 'reactstrap'
+import {  Button, ButtonGroup } from 'reactstrap'
 
 export default class PaginationSection extends React.Component {
     render() {
