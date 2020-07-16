@@ -1,6 +1,7 @@
 import React from 'react'
 import Searcher from '../components/Searcher'
 import SearchResult from '../components/SearchResult'
+import OptionsSearch from '../components/OptionsSearch'
 import { Badge } from 'reactstrap'
 
 export default class Home extends React.Component {
@@ -23,26 +24,27 @@ export default class Home extends React.Component {
         })
     }
 
-    nextPage(){
-        const newPage = this.state.pageQuery+1
+    nextPage() {
+        const newPage = this.state.pageQuery + 1
         this.setState({
-            pageQuery: newPage 
+            pageQuery: newPage
         })
     }
 
-    prevPage(){
-        const newPage = this.state.pageQuery-1
+    prevPage() {
+        const newPage = this.state.pageQuery - 1
         this.setState({
-            pageQuery: newPage 
+            pageQuery: newPage
         })
     }
 
     render() {
         return (
-            <div className="container-fluid">                
-                <div className="container">
+            <div className="container-fluid">
+                <div className="container">                    
                     <Searcher setSearch={this.getSearch} />
-                    <p className="text-muted"><i> Has buscado:</i> <Badge>{this.state.query}</Badge></p>
+                    <p className="text-muted" style={{marginBottom: '-1px'}}><i> Has buscado:</i> <Badge>{this.state.query}</Badge></p>
+                    <OptionsSearch />
                 </div>
                 {/*                
                 <div className="container">
@@ -50,8 +52,8 @@ export default class Home extends React.Component {
                 </div>
                 */}
                 <div className="container-fluid">
-                    <SearchResult search={this.state.query} page={this.state.pageQuery}/>
-                </div>                
+                    <SearchResult search={this.state.query} page={this.state.pageQuery} />
+                </div>
             </div>
         )
     }
