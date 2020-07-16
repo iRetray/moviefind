@@ -1,6 +1,9 @@
 import React from 'react'
 import Axios from 'axios'
 import Movie from './Movie'
+import { Alert } from 'reactstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
 
 export default class SearchResult extends React.Component {
 
@@ -46,6 +49,16 @@ export default class SearchResult extends React.Component {
                             </div>
                             : <div key={e.id}></div>
                     )
+                }
+                {
+                    this.state.results.length === 0 && this.props.search !== "" ?
+                        <div className="mx-auto">
+                            <Alert color="danger">
+                                <FontAwesomeIcon icon={faExclamationTriangle} />{'   '}
+                                 No se han encontrado resultados para <strong>{this.props.search}</strong>, intenta usar <i>menos palabras</i> o <i>usar otros terminos de busqueda.</i>
+                            </Alert>
+                        </div>
+                        : <div></div>
                 }
             </div>
         )

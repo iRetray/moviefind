@@ -1,7 +1,6 @@
 import React from 'react'
 import Searcher from '../components/Searcher'
 import SearchResult from '../components/SearchResult'
-import PaginationSection from '../components/PaginationSection'
 import { Badge } from 'reactstrap'
 
 export default class Home extends React.Component {
@@ -45,9 +44,11 @@ export default class Home extends React.Component {
                     <Searcher setSearch={this.getSearch} />
                     <p className="text-muted"><i> Has buscado:</i> <Badge>{this.state.query}</Badge></p>
                 </div>
+                {/*                
                 <div className="container">
                     <PaginationSection  next={this.nextPage} prev={this.prevPage}/>
                 </div>
+                */}
                 <div className="container-fluid">
                     <SearchResult search={this.state.query} page={this.state.pageQuery}/>
                 </div>                
