@@ -4,7 +4,7 @@ import SearchResult from '../components/SearchResult'
 import OptionsSearch from '../components/OptionsSearch'
 import { Badge } from 'reactstrap'
 
-export default class Home extends React.Component {
+export default class Search extends React.Component {
 
     constructor(props) {
         super(props)

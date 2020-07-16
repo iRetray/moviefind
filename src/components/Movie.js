@@ -10,6 +10,7 @@ export default class Movie extends React.Component {
         this.state = {
             genresMovie: []
         }
+        this.handleClick = this.handleClick.bind(this)
     }
 
     componentDidUpdate() {
@@ -21,13 +22,17 @@ export default class Movie extends React.Component {
         const peticion = await Axios.get(completeQuery)
         this.setState({
             genresMovie: peticion.data.genres
-        })
+        })        
+    }
+
+    handleClick(){
+        console.log("has clicado ",this.props.title)
     }
 
     render() {
 
         return (
-            <div className="card" style={{border: 'none'}}>
+            <div className="card" style={{border: 'none', cursor: 'pointer'}} onClick={this.handleClick}>
                 <img className="card-img-top img-fluid" src={this.props.poster} alt="" />
                 <div className="card-body">
                     <h5 className="card-title">{this.props.title}</h5>

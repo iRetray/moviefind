@@ -40,7 +40,7 @@ export default class Welcome extends React.Component {
                                 </div>
                             </div>
                             <br></br>
-                            <Link to="/home" style={{ textDecoration: 'none' }}>
+                            <Link to="/search" style={{ textDecoration: 'none' }}>
                                 <Button color="danger" size="lg" block><FontAwesomeIcon icon={faPlayCircle}></FontAwesomeIcon> <strong>Buscar películas</strong></Button>
                             </Link>
                         </div>
