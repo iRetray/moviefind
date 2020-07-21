@@ -36,7 +36,7 @@ export default class SearchResult extends React.Component {
                 {
                     this.state.results.map(e =>
                         e.poster_path !== null ?
-                            <div className="col-sm-6 col-md-4 col-md-4 col-lg-3 col-xl-2 align-self-center" style={{ padding: '10px' }} key={e.id}>
+                            <div className="col-sm-6 col-md-4 col-md-4 col-lg-3 col-xl-2 align-self-center" style={{ padding: '15px' }} key={e.id}>
                                 <center>
                                     <Movie
                                         title={e.title}

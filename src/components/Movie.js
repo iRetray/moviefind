@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Badge } from 'reactstrap'
 import Rating from '@material-ui/lab/Rating';
 import Axios from 'axios'
+import './styles/Movie.css'
 
 export default class Movie extends React.Component {
 
@@ -23,13 +24,13 @@ export default class Movie extends React.Component {
         this.setState({
             genresMovie: peticion.data.genres
         })
-    }
+    }    
 
     render() {
 
         return (
             <Link to={"/details/"+this.props.id} style={{textDecoration: 'none', color: 'black'}}>
-                <div className="card" style={{ border: 'none', cursor: 'pointer' }}>
+                <div className="card cardMovie" style={{ border: 'none', cursor: 'pointer'}}>
                     <img className="card-img-top img-fluid" src={this.props.poster} alt="" />
                     <div className="card-body">
                         <h5 className="card-title" style={{textDecoration: 'none'}}>{this.props.title}</h5>
