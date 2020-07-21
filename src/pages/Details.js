@@ -1,8 +1,9 @@
 import React from 'react'
 import Axios from 'axios'
-import { Jumbotron, Button } from 'reactstrap'
+import { Jumbotron, Button, Alert } from 'reactstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTicketAlt } from '@fortawesome/free-solid-svg-icons'
+import { faTicketAlt, faPager } from '@fortawesome/free-solid-svg-icons'
+import { faBuilding  } from '@fortawesome/free-regular-svg-icons'
 
 export default class Details extends React.Component {
 
@@ -34,7 +35,7 @@ export default class Details extends React.Component {
                 <div className="container row justify-content-md-center">
                     <div className="col-lg-4">
                         <img src={"https://image.tmdb.org/t/p/original" + this.state.dataMovie.poster_path} alt="" className="img-fluid" />
-                        <div style={{marginTop: '10px'}}>
+                        <div style={{ marginTop: '10px' }}>
                             <a href={"https://www.netflix.com/search?q=" + this.state.dataMovie.title} style={{ textDecoration: 'none' }}>
                                 <Button color="danger" block><FontAwesomeIcon icon={faTicketAlt} /> Buscar en Netflix</Button>
                             </a>
@@ -48,7 +49,30 @@ export default class Details extends React.Component {
                                 <h6 className="text-muted">{this.state.dataMovie.tagline}</h6>
                             </p>
                             <p align="justify">{this.state.dataMovie.overview}</p>
+                            <hr />
+                            {
+                                this.state.dataMovie.homepage
+                                    ? <Button color="link" href={this.state.dataMovie.homepage}><FontAwesomeIcon icon={faPager} /> Sitio web de {this.state.dataMovie.title}</Button>
+                                    : <div></div>
+                            }
                         </Jumbotron>
+                        <Alert color="dark">
+                            {
+                                this.state.dataMovie.production_companies
+                                    ? <div>
+                                        <h5><FontAwesomeIcon icon={faBuilding}/>  Compañias de producción</h5>
+                                        <hr />
+                                        {
+                                            this.state.dataMovie.production_companies.map(e =>
+                                                <div className="container">
+                                                    <img src={"https://image.tmdb.org/t/p/w500"+e.logo_path} alt="" className="img-fluid"/>
+                                                </div>
+                                            )
+                                        }
+                                    </div>
+                                    : <div></div>
+                            }
+                        </Alert>
                         <img src={"https://image.tmdb.org/t/p/original" + this.state.dataMovie.backdrop_path} alt="" className="img-fluid" />
                     </div>
                 </div>
