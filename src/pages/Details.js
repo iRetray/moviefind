@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPager } from '@fortawesome/free-solid-svg-icons'
 import { faBuilding } from '@fortawesome/free-regular-svg-icons'
 import NetflixIcon from '../images/netflix.svg'
+import '../components/styles/Movie.css'
 
 export default class Details extends React.Component {
 
@@ -36,16 +37,18 @@ export default class Details extends React.Component {
             <center>
                 <div className="container row justify-content-md-center">
                     <div className="col-lg-4">
-                        <img src={"https://image.tmdb.org/t/p/original" + this.state.dataMovie.poster_path} alt="" className="img-fluid" />
+                        <div className="cardMovie">
+                            <img src={"https://image.tmdb.org/t/p/original" + this.state.dataMovie.poster_path} alt="" className="img-fluid" />
+                        </div>
                         <hr />
                         <Toast color="warning">
                             {
                                 this.state.dataMovie.production_companies
-                                    ? <div>
+                                    ? <div className="cardMovie">
                                         <ToastHeader><FontAwesomeIcon icon={faBuilding} />  Compañias de producción</ToastHeader>
                                         <ToastBody>
                                             {
-                                                this.state.dataMovie.production_companies.map(e => 
+                                                this.state.dataMovie.production_companies.map(e =>
                                                     e.logo_path !== null
                                                         ? <div className="container" style={{ padding: '15px' }}>
                                                             <img src={"https://image.tmdb.org/t/p/w500" + e.logo_path} alt="" className="img-fluid" />
@@ -59,30 +62,32 @@ export default class Details extends React.Component {
                             }
                         </Toast>
                     </div>
-                    
-                    <div className="col-lg-8">
-                    <hr/>
-                        <Card style={{ border: 'none' }}>
-                            <CardImg top width="100%" src={"https://image.tmdb.org/t/p/original" + this.state.dataMovie.backdrop_path} alt="" />
-                            <CardBody>
-                                <CardText>
-                                    <h3>
-                                        <a href={"https://www.netflix.com/search?q=" + this.state.dataMovie.title} style={{ textDecoration: 'none' }}>
-                                            <img src={NetflixIcon} alt="" className="img-fluid" style={{ maxWidth: '40px' }} />
-                                        </a>{'  '}
-                                        {this.state.dataMovie.title}
-                                    </h3>
-                                    <i>{this.state.dataMovie.tagline}</i>
-                                    <hr />
-                                    <p align="justify">{this.state.dataMovie.overview}</p>
-                                    {
-                                        this.state.dataMovie.homepage
-                                            ? <div><hr /><Button color="link" href={this.state.dataMovie.homepage}><FontAwesomeIcon icon={faPager} /> Sitio web de {this.state.dataMovie.title}</Button></div>
-                                            : <div></div>
-                                    }
-                                </CardText>
-                            </CardBody>
-                        </Card>
+
+                    <div className="col-lg-8" style={{marginBottom: '50px'}}>
+                        <hr />
+                        <div className="cardMovie">
+                            <Card style={{ border: 'none' }}>
+                                <CardImg top width="100%" src={"https://image.tmdb.org/t/p/original" + this.state.dataMovie.backdrop_path} alt="" />
+                                <CardBody>
+                                    <CardText>
+                                        <h3>
+                                            <a href={"https://www.netflix.com/search?q=" + this.state.dataMovie.title} style={{ textDecoration: 'none' }}>
+                                                <img src={NetflixIcon} alt="" className="img-fluid" style={{ maxWidth: '40px' }} />
+                                            </a>{'  '}
+                                            {this.state.dataMovie.title}
+                                        </h3>
+                                        <i>{this.state.dataMovie.tagline}</i>
+                                        <hr />
+                                        <p align="justify">{this.state.dataMovie.overview}</p>
+                                        {
+                                            this.state.dataMovie.homepage
+                                                ? <div><hr /><Button color="link" href={this.state.dataMovie.homepage}><FontAwesomeIcon icon={faPager} /> Sitio web de {this.state.dataMovie.title}</Button></div>
+                                                : <div></div>
+                                        }
+                                    </CardText>
+                                </CardBody>
+                            </Card>
+                        </div>
                     </div>
                 </div>
             </center>
