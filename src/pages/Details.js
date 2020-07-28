@@ -1,16 +1,18 @@
 import React from 'react'
 import Axios from 'axios'
-import { Jumbotron, Button, Alert } from 'reactstrap'
+import { Button, Toast, ToastHeader, ToastBody, Card, CardBody, CardImg, CardText } from 'reactstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTicketAlt, faPager } from '@fortawesome/free-solid-svg-icons'
-import { faBuilding  } from '@fortawesome/free-regular-svg-icons'
+import { faPager } from '@fortawesome/free-solid-svg-icons'
+import { faBuilding } from '@fortawesome/free-regular-svg-icons'
+import NetflixIcon from '../images/netflix.svg'
 
 export default class Details extends React.Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            dataMovie: []
+            dataMovie: [],
+            date: ""
         }
         this.getDetails = this.getDetails.bind(this)
     }
@@ -35,45 +37,52 @@ export default class Details extends React.Component {
                 <div className="container row justify-content-md-center">
                     <div className="col-lg-4">
                         <img src={"https://image.tmdb.org/t/p/original" + this.state.dataMovie.poster_path} alt="" className="img-fluid" />
-                        <div style={{ marginTop: '10px' }}>
-                            <a href={"https://www.netflix.com/search?q=" + this.state.dataMovie.title} style={{ textDecoration: 'none' }}>
-                                <Button color="danger" block><FontAwesomeIcon icon={faTicketAlt} /> Buscar en Netflix</Button>
-                            </a>
-                        </div>
-
-                    </div>
-                    <div className="col-lg-8">
-                        <Jumbotron>
-                            <p>
-                                <p className="display-4">{this.state.dataMovie.title}</p>
-                                <h6 className="text-muted">{this.state.dataMovie.tagline}</h6>
-                            </p>
-                            <p align="justify">{this.state.dataMovie.overview}</p>
-                            <hr />
-                            {
-                                this.state.dataMovie.homepage
-                                    ? <Button color="link" href={this.state.dataMovie.homepage}><FontAwesomeIcon icon={faPager} /> Sitio web de {this.state.dataMovie.title}</Button>
-                                    : <div></div>
-                            }
-                        </Jumbotron>
-                        <Alert color="dark">
+                        <hr />
+                        <Toast color="warning">
                             {
                                 this.state.dataMovie.production_companies
                                     ? <div>
-                                        <h5><FontAwesomeIcon icon={faBuilding}/>  Compañias de producción</h5>
-                                        <hr />
-                                        {
-                                            this.state.dataMovie.production_companies.map(e =>
-                                                <div className="container">
-                                                    <img src={"https://image.tmdb.org/t/p/w500"+e.logo_path} alt="" className="img-fluid"/>
-                                                </div>
-                                            )
-                                        }
+                                        <ToastHeader><FontAwesomeIcon icon={faBuilding} />  Compañias de producción</ToastHeader>
+                                        <ToastBody>
+                                            {
+                                                this.state.dataMovie.production_companies.map(e => 
+                                                    e.logo_path !== null
+                                                        ? <div className="container" style={{ padding: '15px' }}>
+                                                            <img src={"https://image.tmdb.org/t/p/w500" + e.logo_path} alt="" className="img-fluid" />
+                                                        </div>
+                                                        : <div></div>
+                                                )
+                                            }
+                                        </ToastBody>
                                     </div>
                                     : <div></div>
                             }
-                        </Alert>
-                        <img src={"https://image.tmdb.org/t/p/original" + this.state.dataMovie.backdrop_path} alt="" className="img-fluid" />
+                        </Toast>
+                    </div>
+                    
+                    <div className="col-lg-8">
+                    <hr/>
+                        <Card style={{ border: 'none' }}>
+                            <CardImg top width="100%" src={"https://image.tmdb.org/t/p/original" + this.state.dataMovie.backdrop_path} alt="" />
+                            <CardBody>
+                                <CardText>
+                                    <h3>
+                                        <a href={"https://www.netflix.com/search?q=" + this.state.dataMovie.title} style={{ textDecoration: 'none' }}>
+                                            <img src={NetflixIcon} alt="" className="img-fluid" style={{ maxWidth: '40px' }} />
+                                        </a>{'  '}
+                                        {this.state.dataMovie.title}
+                                    </h3>
+                                    <i>{this.state.dataMovie.tagline}</i>
+                                    <hr />
+                                    <p align="justify">{this.state.dataMovie.overview}</p>
+                                    {
+                                        this.state.dataMovie.homepage
+                                            ? <div><hr /><Button color="link" href={this.state.dataMovie.homepage}><FontAwesomeIcon icon={faPager} /> Sitio web de {this.state.dataMovie.title}</Button></div>
+                                            : <div></div>
+                                    }
+                                </CardText>
+                            </CardBody>
+                        </Card>
                     </div>
                 </div>
             </center>
