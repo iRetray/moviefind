@@ -1,6 +1,7 @@
 import React from 'react'
 import Axios from 'axios'
 import { Button, Toast, ToastHeader, ToastBody, Card, CardBody, CardImg, CardText } from 'reactstrap'
+import { MDBContainer, MDBFooter } from "mdbreact";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPager } from '@fortawesome/free-solid-svg-icons'
 import { faBuilding } from '@fortawesome/free-regular-svg-icons'
@@ -18,7 +19,7 @@ export default class Details extends React.Component {
         this.getDetails = this.getDetails.bind(this)
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.getDetails()
     }
 
@@ -34,63 +35,72 @@ export default class Details extends React.Component {
 
     render() {
         return (
-            <center>
-                <div className="container row justify-content-md-center">
-                    <div className="col-lg-4">
-                        <div className="cardMovie">
-                            <img src={"https://image.tmdb.org/t/p/original" + this.state.dataMovie.poster_path} alt="" className="img-fluid" />
+            <div>
+                <center>
+                    <div className="container row justify-content-md-center">
+                        <div className="col-lg-4">
+                            <div className="cardMovie">
+                                <img src={"https://image.tmdb.org/t/p/original" + this.state.dataMovie.poster_path} alt="" className="img-fluid" />
+                            </div>
+                            <hr />
+                            <Toast color="warning">
+                                {
+                                    this.state.dataMovie.production_companies
+                                        ? <div className="cardMovie">
+                                            <ToastHeader><FontAwesomeIcon icon={faBuilding} />  Compañias de producción</ToastHeader>
+                                            <ToastBody>
+                                                {
+                                                    this.state.dataMovie.production_companies.map(e =>
+                                                        e.logo_path !== null
+                                                            ? <div className="container" style={{ padding: '15px' }}>
+                                                                <img src={"https://image.tmdb.org/t/p/w500" + e.logo_path} alt="" className="img-fluid" />
+                                                            </div>
+                                                            : <div></div>
+                                                    )
+                                                }
+                                            </ToastBody>
+                                        </div>
+                                        : <div></div>
+                                }
+                            </Toast>
                         </div>
-                        <hr />
-                        <Toast color="warning">
-                            {
-                                this.state.dataMovie.production_companies
-                                    ? <div className="cardMovie">
-                                        <ToastHeader><FontAwesomeIcon icon={faBuilding} />  Compañias de producción</ToastHeader>
-                                        <ToastBody>
-                                            {
-                                                this.state.dataMovie.production_companies.map(e =>
-                                                    e.logo_path !== null
-                                                        ? <div className="container" style={{ padding: '15px' }}>
-                                                            <img src={"https://image.tmdb.org/t/p/w500" + e.logo_path} alt="" className="img-fluid" />
-                                                        </div>
-                                                        : <div></div>
-                                                )
-                                            }
-                                        </ToastBody>
-                                    </div>
-                                    : <div></div>
-                            }
-                        </Toast>
-                    </div>
 
-                    <div className="col-lg-8" style={{marginBottom: '50px'}}>
-                        <hr />
-                        <div className="cardMovie">
-                            <Card style={{ border: 'none' }}>
-                                <CardImg top width="100%" src={"https://image.tmdb.org/t/p/original" + this.state.dataMovie.backdrop_path} alt="" />
-                                <CardBody>
-                                    <CardText>
-                                        <h3>
-                                            <a href={"https://www.netflix.com/search?q=" + this.state.dataMovie.title} style={{ textDecoration: 'none' }}>
-                                                <img src={NetflixIcon} alt="" className="img-fluid" style={{ maxWidth: '40px' }} />
-                                            </a>{'  '}
-                                            {this.state.dataMovie.title}
-                                        </h3>
-                                        <i>{this.state.dataMovie.tagline}</i>
-                                        <hr />
-                                        <p align="justify">{this.state.dataMovie.overview}</p>
-                                        {
-                                            this.state.dataMovie.homepage
-                                                ? <div><hr /><Button color="link" href={this.state.dataMovie.homepage}><FontAwesomeIcon icon={faPager} /> Sitio web de {this.state.dataMovie.title}</Button></div>
-                                                : <div></div>
-                                        }
-                                    </CardText>
-                                </CardBody>
-                            </Card>
+                        <div className="col-lg-8">
+                            <hr />
+                            <div className="cardMovie">
+                                <Card style={{ border: 'none' }}>
+                                    <CardImg top width="100%" src={"https://image.tmdb.org/t/p/original" + this.state.dataMovie.backdrop_path} alt="" />
+                                    <CardBody>
+                                        <CardText>
+                                            <h3>
+                                                <a href={"https://www.netflix.com/search?q=" + this.state.dataMovie.title} style={{ textDecoration: 'none' }}>
+                                                    <img src={NetflixIcon} alt="" className="img-fluid" style={{ maxWidth: '40px' }} />
+                                                </a>{'  '}
+                                                {this.state.dataMovie.title}
+                                            </h3>
+                                            <i>{this.state.dataMovie.tagline}</i>
+                                            <hr />
+                                            <p align="justify">{this.state.dataMovie.overview}</p>
+                                            {
+                                                this.state.dataMovie.homepage
+                                                    ? <div><hr /><Button color="link" href={this.state.dataMovie.homepage}><FontAwesomeIcon icon={faPager} /> Sitio web de {this.state.dataMovie.title}</Button></div>
+                                                    : <div></div>
+                                            }
+                                        </CardText>
+                                    </CardBody>
+                                </Card>
+                            </div>
                         </div>
                     </div>
+                </center >
+                <div className="container-fluid">
+                    <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+                        <div class="container text-center">
+                            <small><strong> MovieFind &copy;</strong> <i>Potenciado por TMDB</i></small>
+                        </div>
+                    </footer>
                 </div>
-            </center>
+            </div>
         )
     }
 }
