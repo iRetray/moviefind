@@ -1,7 +1,6 @@
 import React from 'react'
 import Axios from 'axios'
 import { Button, Toast, ToastHeader, ToastBody, Card, CardBody, CardImg, CardText } from 'reactstrap'
-import { MDBContainer, MDBFooter } from "mdbreact";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPager } from '@fortawesome/free-solid-svg-icons'
 import { faBuilding } from '@fortawesome/free-regular-svg-icons'
